@@ -7,10 +7,10 @@ import Nav from "react-bootstrap/Nav";
 import { AppContext } from "./lib/contextLib";
 
 function App() {
-    const [isAuthenticated, userHasAuthenticated] = useState(false);
+    const [isAuthenticated,setAuthenticated] = useState(false);
 
     function handleLogout() {
-        userHasAuthenticated(false);
+        setAuthenticated(false);
     }
 
     return (
@@ -38,7 +38,7 @@ function App() {
                 )}
             </Navbar.Collapse>
         </Navbar>
-          <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
+          <AppContext.Provider value={{ isAuthenticated, setAuthenticated }}>
               <Routes />
           </AppContext.Provider>
       </div>

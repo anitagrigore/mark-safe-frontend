@@ -7,7 +7,7 @@ import {useFormFields} from "../lib/hooksLib";
 import Button from "react-bootstrap/Button";
 
 export default function Signup() {
-    const [fields, handleFieldChange] = useFormFields({
+    const [fields, onFieldChange] = useFormFields({
         email: "",
         password: "",
         confirmPassword: "",
@@ -45,7 +45,7 @@ export default function Signup() {
                         autoFocus
                         type="email"
                         value={fields.email}
-                        onChange={handleFieldChange}
+                        onChange={onFieldChange}
                     />
                 </Form.Group>
                 <Form.Group controlId="password" size="lg">
@@ -53,14 +53,14 @@ export default function Signup() {
                     <Form.Control
                         type="password"
                         value={fields.password}
-                        onChange={handleFieldChange}
+                        onChange={onFieldChange}
                     />
                 </Form.Group>
                 <Form.Group controlId="confirmPassword" size="lg">
                     <Form.Label>Confirm Password</Form.Label>
                     <Form.Control
                         type="password"
-                        onChange={handleFieldChange}
+                        onChange={onFieldChange}
                         value={fields.confirmPassword}
                     />
                 </Form.Group>
