@@ -3,7 +3,7 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
 import "../App.css";
-import {AppContext, useAppContext} from "../lib/contextLib";
+import {AppContext} from "../lib/contextLib";
 import {useNavigate} from "react-router-dom";
 
 export default function Login() {

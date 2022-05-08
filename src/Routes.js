@@ -7,6 +7,7 @@ import Signup from "./containers/Signup";
 import Profile from "./containers/Profile";
 import Friends from "./containers/Friends";
 import Report from "./containers/Report";
+import Results from "./containers/Results";
 
 export default function Routes() {
     return (
@@ -17,6 +18,7 @@ export default function Routes() {
             <Route exact path="/profile" element={<Profile/>}/>
             <Route exact path="/friends" element={<Friends/>}/>
             <Route exact path="/report" element={<Report/>}/>
+            <Route exact path="/results" element={<Results/>}/>
             <Route element={<NotFound/>}/>
         </RouterRoutes>
     );

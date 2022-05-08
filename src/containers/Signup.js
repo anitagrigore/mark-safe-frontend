@@ -3,7 +3,6 @@ import Form from "react-bootstrap/Form";
 import {useNavigate} from "react-router-dom";
 import "./Signup.css";
 import "../App.css";
-import {useFormFields} from "../lib/hooksLib";
 import Button from "react-bootstrap/Button";
 import {AppContext} from "../lib/contextLib";
 
@@ -30,7 +29,7 @@ export default function Signup() {
             email,
         });
         navigate("/profile");
-    }
+    };
 
     const onFieldChange = (fn) => (e) => fn(e.target.value);
 

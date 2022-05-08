@@ -24,7 +24,7 @@ export default function Profile() {
 
     return (
         <Container>
-            <Row noGutters>
+            <Row>
                 <Col sm={3} className="SidebarContainer">
                     <div className="Sidebar">
                         <Navigation

@@ -25,6 +25,11 @@ function App() {
         setSearchInput(event.target.value);
     };
 
+    const handleSearch =(event) => {
+        event.preventDefault();
+        navigate("/results");
+    };
+
     return (
       <div className="App container py-3">
         <Navbar variant="light" expand="md" className="navbar-color">
@@ -52,7 +57,7 @@ function App() {
                             />
                         </Col>
                         <Col>
-                            <Button bsPrefix="btn-custom" variant="primary" type="submit">
+                            <Button bsPrefix="btn-custom" variant="primary" type="submit" onClick={handleSearch}>
                                 Search
                             </Button>
                         </Col>
