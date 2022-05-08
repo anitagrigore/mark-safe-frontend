@@ -5,12 +5,15 @@ import logo from "./logo1.svg"
 import Routes from "./Routes";
 import Nav from "react-bootstrap/Nav";
 import { AppContext } from "./lib/contextLib";
+import {useNavigate} from "react-router-dom";
 
 function App() {
+    const navigate = useNavigate();
     const [isAuthenticated,setAuthenticated] = useState(false);
 
     function handleLogout() {
         setAuthenticated(false);
+        navigate("/login");
     }
 
     return (

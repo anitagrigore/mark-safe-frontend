@@ -3,11 +3,13 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
 import { useAppContext } from "../lib/contextLib";
+import {useNavigate} from "react-router";
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const { authenticatedUser } = useAppContext();
+    const navigate = useNavigate();
 
     function validateForm() {
         return email.length > 0 && password.length > 0;
@@ -16,6 +18,7 @@ export default function Login() {
     function handleSubmit(event) {
         event.preventDefault();
         authenticatedUser(true);
+        navigate("/");
     }
 
     return (

@@ -1,19 +1,19 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
-import { useHistory } from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 import { useAppContext } from "../lib/contextLib";
 import "./Signup.css";
 import {useFormFields} from "../lib/hooksLib";
 import Button from "react-bootstrap/Button";
 
 export default function Signup() {
+    const navigate = useNavigate();
     const [fields, onFieldChange] = useFormFields({
         email: "",
         password: "",
         confirmPassword: "",
     });
 
-    const history = useHistory();
     const [newUser, setNewUser] = useState(null);
     const { userHasAuthenticated } = useAppContext();
     const [isLoading, setIsLoading] = useState(false);
@@ -34,6 +34,7 @@ export default function Signup() {
         setNewUser("test");
 
         setIsLoading(false);
+        navigate("/");
     }
 
     return (

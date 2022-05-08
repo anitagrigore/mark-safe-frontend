@@ -1,12 +1,7 @@
 @media all and (min-width: 480px) {
-    .Profile {
+    .Report {
         padding: 60px 0;
         display: flex;
-    }
-
-    .Profile form {
-        margin: 0 auto;
-        width: 400px;
     }
 
     .Sidebar {
@@ -17,10 +12,11 @@
         flex-direction: row;
     }
 
-    .btn-container {
-        display: flex;
-        flex-direction: row;
-        margin: auto 0;
+    .custom-select {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        border-radius: 4px;
+        box-shadow: 0 1px 0 1px rgba(0,0,0, 0.1);
+        padding: 8px 32px 8px 16px;
     }
 }
 
