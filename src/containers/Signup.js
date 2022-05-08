@@ -1,42 +1,38 @@
-import React, { useState } from "react";
+import React, {useContext, useState} from "react";
 import Form from "react-bootstrap/Form";
 import {useNavigate} from "react-router-dom";
-import { useAppContext } from "../lib/contextLib";
 import "./Signup.css";
 import "../App.css";
 import {useFormFields} from "../lib/hooksLib";
 import Button from "react-bootstrap/Button";
+import {AppContext} from "../lib/contextLib";
 
 export default function Signup() {
     const navigate = useNavigate();
-    const [fields, onFieldChange] = useFormFields({
-        email: "",
-        password: "",
-        confirmPassword: "",
-    });
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmPassword, setConfirmPassword] = useState('');
 
-    const [newUser, setNewUser] = useState(null);
-    const { userHasAuthenticated } = useAppContext();
-    const [isLoading, setIsLoading] = useState(false);
+    const { setAuthenticatedUser } = useContext(AppContext);
+    const [ isLoading, setIsLoading ] = useState(false);
 
-    function validateForm() {
-        return (
-            fields.email.length > 0 &&
-            fields.password.length > 0 &&
-            fields.password === fields.confirmPassword
-        );
-    }
+    const validateForm = () => (
+        email.length > 0 &&
+        password.length > 0 &&
+        password === confirmPassword
+    );
 
-    async function handleSubmit(event) {
+    const handleSubmit = (event) => {
         event.preventDefault();
 
-        setIsLoading(true);
-
-        setNewUser("test");
-
-        setIsLoading(false);
-        navigate("/");
+        // setIsLoading(true);
+        setAuthenticatedUser({
+            email,
+        });
+        navigate("/profile");
     }
+
+    const onFieldChange = (fn) => (e) => fn(e.target.value);
 
     return (
         <div className="Signup">
@@ -46,24 +42,24 @@ export default function Signup() {
                     <Form.Control
                         autoFocus
                         type="email"
-                        value={fields.email}
-                        onChange={onFieldChange}
+                        value={email}
+                        onChange={onFieldChange(setEmail)}
                     />
                 </Form.Group>
                 <Form.Group controlId="password" size="lg">
                     <Form.Label>Password</Form.Label>
                     <Form.Control
                         type="password"
-                        value={fields.password}
-                        onChange={onFieldChange}
+                        value={password}
+                        onChange={onFieldChange(setPassword)}
                     />
                 </Form.Group>
                 <Form.Group controlId="confirmPassword" size="lg">
                     <Form.Label>Confirm Password</Form.Label>
                     <Form.Control
                         type="password"
-                        onChange={onFieldChange}
-                        value={fields.confirmPassword}
+                        value={confirmPassword}
+                        onChange={onFieldChange(setConfirmPassword)}
                     />
                 </Form.Group>
                 <Button bsPrefix="btn-custom" variant="primary" type="submit" disabled={!validateForm()}>

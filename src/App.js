@@ -6,25 +6,24 @@ import logo from "./logo1.svg"
 import Routes from "./Routes";
 import Nav from "react-bootstrap/Nav";
 import { AppContext } from "./lib/contextLib";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 
 function App() {
     const navigate = useNavigate();
-    const [isAuthenticated, setAuthenticated] = useState(false);
+    const [authUser, setAuthUser] = useState(null);
+    const [searchInput, setSearchInput] = useState('');
 
-    function handleLogout() {
-        setAuthenticated(false);
+    const onLogout = () => {
+        setAuthUser(null);
         navigate("/login");
-    }
+    };
 
-    function handleSearchInput(event) {
-        this.setState({
-            searchText: event.target.value
-        });
-    }
+    const handleSearchInput = (event) => {
+        setSearchInput(event.target.value);
+    };
 
     return (
       <div className="App container py-3">
@@ -41,13 +40,12 @@ function App() {
           </Navbar.Brand>
           <Navbar.Toggle />
             <Form inline="true">
-                {isAuthenticated ? (
-                <Container>
+                {!!authUser && <Container>
                     <Row>
                         <Col lg={8}>
                             <FormControl
                                 onChange={handleSearchInput}
-                                value=""
+                                value={searchInput}
                                 type="text"
                                 placeholder="Search"
                                 className="mr-sm-2"
@@ -59,12 +57,11 @@ function App() {
                             </Button>
                         </Col>
                     </Row>
-                </Container>
-                ) : (<></>)}
+                </Container>}
             </Form>
             <Navbar.Collapse className="justify-content-end">
-                {isAuthenticated ? (
-                    <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
+                {!!authUser ? (
+                    <Nav.Link onClick={onLogout}>Logout</Nav.Link>
                 ) : (
                     <>
                         <Nav.Link href="/signup">Signup</Nav.Link>
@@ -73,7 +70,7 @@ function App() {
                 )}
             </Navbar.Collapse>
         </Navbar>
-          <AppContext.Provider value={{ isAuthenticated, setAuthenticated }}>
+          <AppContext.Provider value={{ authenticatedUser: authUser, setAuthenticatedUser: setAuthUser }}>
               <Routes />
           </AppContext.Provider>
       </div>

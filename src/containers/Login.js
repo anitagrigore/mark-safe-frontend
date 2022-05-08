@@ -1,26 +1,28 @@
-import React, { useState } from "react";
+import React, {useContext, useState} from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
 import "../App.css";
-import { useAppContext } from "../lib/contextLib";
+import {AppContext, useAppContext} from "../lib/contextLib";
 import {useNavigate} from "react-router-dom";
 
 export default function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    const { authenticatedUser } = useAppContext();
+    const { setAuthenticatedUser } = useContext(AppContext);
     const navigate = useNavigate();
 
-    function validateForm() {
+    const validateForm = () => {
         return email.length > 0 && password.length > 0;
-    }
+    };
 
-    function handleSubmit(event) {
+    const handleSubmit = (event) => {
         event.preventDefault();
-        authenticatedUser(true);
-        navigate("/");
-    }
+        setAuthenticatedUser({
+            email,
+        });
+        navigate("/profile");
+    };
 
     return (
         <div className="Login">
