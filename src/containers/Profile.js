@@ -57,11 +57,11 @@ export default function Profile() {
                                     value={firstName}
                                     onChange={(e) => setFirstName(e.target.value)}
                                 />
-                                <Button bsPrefix="btn-custom" variant="primary" type="submit" disabled={!firstName}>
-                                    Edit
-                                </Button>
                                 <Button bsPrefix="btn-custom" variant="primary" type="reset">
                                     Cancel
+                                </Button>
+                                <Button bsPrefix="btn-custom" variant="primary" type="submit" disabled={!firstName}>
+                                    Edit
                                 </Button>
                             </Form.Group>
                             <Form.Group size="lg" controlId="lastName">
@@ -71,11 +71,11 @@ export default function Profile() {
                                     value={lastName}
                                     onChange={(e) => setLastName(e.target.value)}
                                 />
-                                <Button bsPrefix="btn-custom" variant="primary" type="submit" disabled={!lastName}>
-                                    Edit
-                                </Button>
                                 <Button bsPrefix="btn-custom" variant="primary" type="reset">
                                     Cancel
+                                </Button>
+                                <Button bsPrefix="btn-custom" variant="primary" type="submit" disabled={!lastName}>
+                                    Edit
                                 </Button>
                             </Form.Group>
                             <Form.Group size="lg" controlId="email">
@@ -85,11 +85,11 @@ export default function Profile() {
                                     value={email}
                                     onChange={(e) => setEmail(e.target.value)}
                                 />
-                                <Button bsPrefix="btn-custom" variant="primary" type="submit" disabled={!email}>
-                                    Edit
-                                </Button>
                                 <Button bsPrefix="btn-custom" variant="primary" type="reset">
                                     Cancel
+                                </Button>
+                                <Button bsPrefix="btn-custom" variant="primary" type="submit" disabled={!email}>
+                                    Edit
                                 </Button>
                             </Form.Group>
                             <Form.Group size="lg" controlId="phoneNumber">
@@ -99,11 +99,11 @@ export default function Profile() {
                                     value={phoneNumber}
                                     onChange={(e) => setPhoneNumber(e.target.value)}
                                 />
-                                <Button bsPrefix="btn-custom" variant="primary" type="submit" disabled={!phoneNumber}>
-                                    Edit
-                                </Button>
                                 <Button bsPrefix="btn-custom" variant="primary" type="reset">
                                     Cancel
+                                </Button>
+                                <Button bsPrefix="btn-custom" variant="primary" type="submit" disabled={!phoneNumber}>
+                                    Edit
                                 </Button>
                             </Form.Group>
                         </Form>

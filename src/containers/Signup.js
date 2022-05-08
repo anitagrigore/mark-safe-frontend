@@ -3,6 +3,7 @@ import Form from "react-bootstrap/Form";
 import {useNavigate} from "react-router-dom";
 import { useAppContext } from "../lib/contextLib";
 import "./Signup.css";
+import "../App.css";
 import {useFormFields} from "../lib/hooksLib";
 import Button from "react-bootstrap/Button";
 

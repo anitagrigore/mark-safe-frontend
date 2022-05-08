@@ -9,18 +9,9 @@
         width: 400px;
     }
 
-    .Sidebar {
-    }
-
     .Container {
         display: flex;
         flex-direction: row;
-    }
-
-    .btn-container {
-        display: flex;
-        flex-direction: row;
-        margin: auto 0;
     }
 }
 

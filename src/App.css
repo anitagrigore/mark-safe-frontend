@@ -8,3 +8,12 @@
 .SidebarContainer {
   padding: 0;
 }
+
+.btn-custom {
+  background-color: #edc7b7;
+  border-radius: 5px;
+  text-align: center;
+  border: 1px solid black;
+  margin: 5px;
+  float: right;
+}

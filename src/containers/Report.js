@@ -1,5 +1,5 @@
 import React from "react";
-import {Form} from "react-bootstrap";
+import {Button, Form} from "react-bootstrap";
 import "./Report.css"
 import "../App.css"
 import {Navigation} from 'react-minimal-side-navigation';
@@ -14,7 +14,7 @@ export default function Report() {
 
     return (
         <Container>
-            <Row noGutters>
+            <Row>
                 <Col sm={3} className="SidebarContainer">
                     <div className="Sidebar">
                         <Navigation
@@ -37,17 +37,22 @@ export default function Report() {
                     </div>
                 </Col>
                 <Col>
-                    <Form>
-                        <Form.Select size="lg" bsPrefix="custom-select" aria-label="Select the category of danger">
-                            <option>Open this select menu</option>
-                            <option value="1">Bomb</option>
-                            <option value="2">Fire</option>
-                            <option value="3">Nuclear attack</option>
-                            <option value="3">Air attack</option>
-                            <option value="3">Gun shots</option>
-                            <option value="3">Other</option>
-                        </Form.Select>
-                    </Form>
+                    <div >
+                        <Form>
+                            <Form.Select size="lg" bsPrefix="custom-select" aria-label="Select the category of danger">
+                                <option>Open this select menu</option>
+                                <option value="1">Bomb</option>
+                                <option value="2">Fire</option>
+                                <option value="3">Nuclear attack</option>
+                                <option value="3">Air attack</option>
+                                <option value="3">Gun shots</option>
+                                <option value="3">Other</option>
+                            </Form.Select>
+                        </Form>
+                        <Button bsPrefix="btn-custom" variant="primary" type="submit">
+                            Report
+                        </Button>
+                    </div>
                 </Col>
             </Row>
         </Container>

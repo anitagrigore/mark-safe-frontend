@@ -1,5 +1,6 @@
 import React from "react";
 import "./Friends.css"
+import "../App.css";
 import {Navigation} from 'react-minimal-side-navigation';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
 import {useNavigate} from "react-router-dom";
