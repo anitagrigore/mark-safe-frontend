@@ -15,6 +15,8 @@ import CompleteProfile from "./containers/CompleteProfile";
 function App() {
     const [searchInput, setSearchInput] = useState('');
     const [profile, setProfile] = useState(null);
+    const [isProfileLoading, setProfileLoading] = useState(true);
+
     const {
         loginWithRedirect,
         logout,
@@ -29,7 +31,10 @@ function App() {
         if (isAuthenticated) {
             userProfile(getAccessTokenSilently, getIdTokenClaims).then(profile => {
                 setProfile(profile);
+                setProfileLoading(false);
             });
+        } else {
+            setProfileLoading(false);
         }
     }, [isAuthenticated, getAccessTokenSilently, getIdTokenClaims]);
 
@@ -41,7 +46,7 @@ function App() {
         setSearchInput(event.target.value);
     };
 
-    if (isLoading) {
+    if (isLoading || isProfileLoading) {
         return <div>Loading...</div>;
     }
 
@@ -90,10 +95,7 @@ function App() {
                     )}
                 </Navbar.Collapse>
             </Navbar>
-            <AppContext.Provider value={{
-                authenticatedUser: user, setAuthenticatedUser: () => {
-                }
-            }}>
+            <AppContext.Provider value={{profile}}>
                 {isAuthenticated && !profile ? <CompleteProfile onComplete={setProfile}/> : <Routes/>}
             </AppContext.Provider>
         </div>
@@ -116,7 +118,8 @@ const userProfile = async (getAccessTokenSilently, getIdTokenClaims) => {
         return null;
     }
 
-    return await response.json();
+    const json = await response.json();
+    return json.profile;
 };
 
 export default App;

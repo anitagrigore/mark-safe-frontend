@@ -1,6 +1,5 @@
 import { createContext } from "react";
 
 export const AppContext = createContext({
-    authenticatedUser: null,
-    setAuthenticatedUser: (user) => {},
+    profile: null,
 });
