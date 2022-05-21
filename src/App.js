@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useCallback, useEffect, useState} from "react";
 import Navbar from "react-bootstrap/Navbar";
 import {Form, FormControl, Button} from "react-bootstrap";
 import "./App.css";
@@ -12,18 +12,19 @@ import Col from "react-bootstrap/Col";
 import {useAuth0} from "@auth0/auth0-react";
 import CompleteProfile from "./containers/CompleteProfile";
 import {useNavigate} from "react-router-dom";
+import {throttle} from "lodash/function";
+import {List} from "immutable";
+import {ProfileSearch} from "./search/Search";
 
 function App() {
     const navigate = useNavigate();
 
-    const [searchInput, setSearchInput] = useState('');
     const [profile, setProfile] = useState(null);
     const [isProfileLoading, setProfileLoading] = useState(true);
 
     const {
         loginWithRedirect,
         logout,
-        user,
         isAuthenticated,
         isLoading,
         getAccessTokenSilently,
@@ -47,10 +48,6 @@ function App() {
         logout({returnTo: window.location.origin});
     };
 
-    const handleSearchInput = (event) => {
-        setSearchInput(event.target.value);
-    };
-
     if (isLoading || isProfileLoading) {
         return <div>Loading...</div>;
     }
@@ -70,24 +67,7 @@ function App() {
                 </Navbar.Brand>
                 <Navbar.Toggle/>
                 <Form inline="true">
-                    {isAuthenticated && <Container>
-                        <Row>
-                            <Col lg={8}>
-                                <FormControl
-                                    onChange={handleSearchInput}
-                                    value={searchInput}
-                                    type="text"
-                                    placeholder="Search"
-                                    className="mr-sm-2"
-                                />
-                            </Col>
-                            <Col>
-                                <Button bsPrefix="btn-custom" variant="primary" type="submit">
-                                    Search
-                                </Button>
-                            </Col>
-                        </Row>
-                    </Container>}
+                    {isAuthenticated && <ProfileSearch/>}
                 </Form>
                 <Navbar.Collapse className="justify-content-end">
                     {isAuthenticated ? (
@@ -126,5 +106,6 @@ const userProfile = async (getAccessTokenSilently, getIdTokenClaims) => {
     const json = await response.json();
     return json.profile;
 };
+
 
 export default App;
