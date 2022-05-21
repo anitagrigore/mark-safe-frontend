@@ -11,8 +11,11 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import {useAuth0} from "@auth0/auth0-react";
 import CompleteProfile from "./containers/CompleteProfile";
+import {useNavigate} from "react-router-dom";
 
 function App() {
+    const navigate = useNavigate();
+
     const [searchInput, setSearchInput] = useState('');
     const [profile, setProfile] = useState(null);
     const [isProfileLoading, setProfileLoading] = useState(true);
@@ -32,6 +35,8 @@ function App() {
             userProfile(getAccessTokenSilently, getIdTokenClaims).then(profile => {
                 setProfile(profile);
                 setProfileLoading(false);
+
+                navigate('/profile');
             });
         } else {
             setProfileLoading(false);
