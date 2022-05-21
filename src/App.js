@@ -36,8 +36,6 @@ function App() {
             userProfile(getAccessTokenSilently, getIdTokenClaims).then(profile => {
                 setProfile(profile);
                 setProfileLoading(false);
-
-                navigate('/profile');
             });
         } else {
             setProfileLoading(false);
