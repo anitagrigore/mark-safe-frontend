@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, {useContext, useState} from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Profile.css"
@@ -9,14 +9,17 @@ import {useNavigate} from "react-router-dom";
 import Container from "react-bootstrap/Container";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
+import {AppContext} from "../lib/contextLib";
 
 export default function Profile() {
     const navigate = useNavigate();
-    const [firstName, setFirstName] = useState("");
-    const [lastName, setLastName] = useState("");
-    const [email, setEmail] = useState("");
-    const [phoneNumber, setPhoneNumber] = useState("");
+    const { profile } = useContext(AppContext);
 
+    if (!profile) {
+        throw new Error('Profile should not be undefined at this point.');
+    }
+
+    const { firstName, lastName, email } = profile;
 
     function handleSubmit(event) {
         event.preventDefault();
@@ -53,58 +56,26 @@ export default function Profile() {
                                 <Form.Label>First Name</Form.Label>
                                 <Form.Control
                                     autoFocus
+                                    readOnly
                                     type="text"
                                     value={firstName}
-                                    onChange={(e) => setFirstName(e.target.value)}
                                 />
-                                <Button bsPrefix="btn-custom" variant="primary" type="reset">
-                                    Cancel
-                                </Button>
-                                <Button bsPrefix="btn-custom" variant="primary" type="submit" disabled={!firstName}>
-                                    Edit
-                                </Button>
                             </Form.Group>
                             <Form.Group size="lg" controlId="lastName">
                                 <Form.Label>Last Name</Form.Label>
                                 <Form.Control
                                     type="text"
+                                    readOnly
                                     value={lastName}
-                                    onChange={(e) => setLastName(e.target.value)}
                                 />
-                                <Button bsPrefix="btn-custom" variant="primary" type="reset">
-                                    Cancel
-                                </Button>
-                                <Button bsPrefix="btn-custom" variant="primary" type="submit" disabled={!lastName}>
-                                    Edit
-                                </Button>
                             </Form.Group>
                             <Form.Group size="lg" controlId="email">
                                 <Form.Label>Email</Form.Label>
                                 <Form.Control
                                     type="email"
+                                    readOnly
                                     value={email}
-                                    onChange={(e) => setEmail(e.target.value)}
                                 />
-                                <Button bsPrefix="btn-custom" variant="primary" type="reset">
-                                    Cancel
-                                </Button>
-                                <Button bsPrefix="btn-custom" variant="primary" type="submit" disabled={!email}>
-                                    Edit
-                                </Button>
-                            </Form.Group>
-                            <Form.Group size="lg" controlId="phoneNumber">
-                                <Form.Label>Phone Number</Form.Label>
-                                <Form.Control
-                                    type="tel"
-                                    value={phoneNumber}
-                                    onChange={(e) => setPhoneNumber(e.target.value)}
-                                />
-                                <Button bsPrefix="btn-custom" variant="primary" type="reset">
-                                    Cancel
-                                </Button>
-                                <Button bsPrefix="btn-custom" variant="primary" type="submit" disabled={!phoneNumber}>
-                                    Edit
-                                </Button>
                             </Form.Group>
                         </Form>
                     </div>

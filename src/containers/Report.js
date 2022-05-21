@@ -45,23 +45,23 @@ export default function Report() {
                     </div>
                 </Col>
                 <Col>
-                    {!!reportSuccessful && <Alert variant="success">
-                        Danger reported successfully!
-                    </Alert>}
-                    <Form onSubmit={handleReport}>
-                        <Form.Select size="lg" bsPrefix="custom-select" aria-label="Select the category of danger">
-                            <option>Open this select menu</option>
-                            <option value="1">Bomb</option>
-                            <option value="2">Fire</option>
-                            <option value="3">Nuclear attack</option>
-                            <option value="3">Air attack</option>
-                            <option value="3">Gun shots</option>
-                            <option value="3">Other</option>
-                        </Form.Select>
-                        <Button bsPrefix="btn-custom" variant="primary" type="submit">
-                            Report
-                        </Button>
-                    </Form>
+                    <div>
+                        <Form>
+                            <Form.Select size="lg" bsPrefix="custom-select" aria-label="Select the category of danger">
+                                <option>Open this select menu</option>
+                                <option value="BOMB">Bomb</option>
+                                <option value="FIRE">Fire</option>
+                                <option value="NUKE">Nuclear attack</option>
+                                <option value="AIR_ATTACK">Air attack</option>
+                                <option value="GUN_SHOTS">Gun shots</option>
+                                <option value="OTHER">Other</option>
+                            </Form.Select>
+
+                            <Button bsPrefix="btn-custom" variant="primary" type="submit">
+                                Report
+                            </Button>
+                        </Form>
+                    </div>
                 </Col>
             </Row>
         </Container>
