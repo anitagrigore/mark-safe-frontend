@@ -60,35 +60,36 @@ export default function Report() {
                     </div>
                 </Col>
                 <Col>
-                    <div>
-                        <Form onSubmit={onSubmit}>
-                            <Form.Select
-                                size="lg"
-                                bsPrefix="custom-select"
-                                aria-label="Select the category of danger"
-                                value={kind}
-                                onChange={e => setKind(e.target.value)}
-                                placeholder="Select kind of danger"
-                            >
-                                <option value="">Select kind of danger</option>
-                                <option value="BOMB">Bomb</option>
-                                <option value="FIRE">Fire</option>
-                                <option value="NUKE">Nuclear attack</option>
-                                <option value="AIR_ATTACK">Air attack</option>
-                                <option value="GUN_SHOTS">Gun shots</option>
-                                <option value="OTHER">Other</option>
-                            </Form.Select>
+                    {!!reportSuccessful && <Alert variant="success">
+                        Danger reported successfully!
+                    </Alert>}
+                    <Form onSubmit={onSubmit}>
+                        <Form.Select
+                            size="lg"
+                            bsPrefix="custom-select"
+                            aria-label="Select the category of danger"
+                            value={kind}
+                            onChange={e => setKind(e.target.value)}
+                            placeholder="Select kind of danger"
+                        >
+                            <option value="">Select kind of danger</option>
+                            <option value="BOMB">Bomb</option>
+                            <option value="FIRE">Fire</option>
+                            <option value="NUKE">Nuclear attack</option>
+                            <option value="AIR_ATTACK">Air attack</option>
+                            <option value="GUN_SHOTS">Gun shots</option>
+                            <option value="OTHER">Other</option>
+                        </Form.Select>
 
-                            <Button
-                                bsPrefix="btn-custom"
-                                variant="primary"
-                                type="submit"
-                                disabled={reportInProgress || reportSuccessful || kind.length === 0}
-                            >
-                                Report
-                            </Button>
-                        </Form>
-                    </div>
+                        <Button
+                            bsPrefix="btn-custom"
+                            variant="primary"
+                            type="submit"
+                            disabled={reportInProgress || reportSuccessful || kind.length === 0}
+                        >
+                            Report
+                        </Button>
+                    </Form>
                 </Col>
             </Row>
         </Container>

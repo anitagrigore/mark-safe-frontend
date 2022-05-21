@@ -1,9 +1,7 @@
 import React, {useCallback, useState} from "react";
 import {List} from "immutable";
-import {throttle} from "lodash/function";
 import {useAuth0} from "@auth0/auth0-react";
 import {Button, FormControl} from "react-bootstrap";
-import Container from "react-bootstrap/Container";
 
 import './styles.css';
 
