@@ -45,7 +45,7 @@ export default function Report() {
                     </div>
                 </Col>
                 <Col>
-                    <div >
+                    <div>
                         <Form>
                             <Form.Select size="lg" bsPrefix="custom-select" aria-label="Select the category of danger">
                                 <option>Open this select menu</option>
@@ -56,11 +56,12 @@ export default function Report() {
                                 <option value="GUN_SHOTS">Gun shots</option>
                                 <option value="OTHER">Other</option>
                             </Form.Select>
+
+                            <Button bsPrefix="btn-custom" variant="primary" type="submit">
+                                Report
+                            </Button>
                         </Form>
-                        <Button bsPrefix="btn-custom" variant="primary" type="submit">
-                            Report
-                        </Button>
-                    </Form>
+                    </div>
                 </Col>
             </Row>
         </Container>
