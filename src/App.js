@@ -1,24 +1,16 @@
-import React, {useCallback, useEffect, useState} from "react";
+import React, {useEffect, useState} from "react";
 import Navbar from "react-bootstrap/Navbar";
-import {Form, FormControl, Button} from "react-bootstrap";
+import {Form} from "react-bootstrap";
 import "./App.css";
-import logo from "./logo1.svg"
+import logo from "./assets/logo1.svg"
 import Routes from "./Routes";
 import Nav from "react-bootstrap/Nav";
 import {AppContext} from "./lib/contextLib";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
 import {useAuth0} from "@auth0/auth0-react";
 import CompleteProfile from "./containers/CompleteProfile";
-import {useNavigate} from "react-router-dom";
-import {throttle} from "lodash/function";
-import {List} from "immutable";
 import {ProfileSearch} from "./search/Search";
 
 function App() {
-    const navigate = useNavigate();
-
     const [profile, setProfile] = useState(null);
     const [isProfileLoading, setProfileLoading] = useState(true);
 
@@ -72,7 +64,6 @@ function App() {
                         <Nav.Link onClick={onLogout}>Logout</Nav.Link>
                     ) : (
                         <>
-                            <Nav.Link href="/signup">Signup</Nav.Link>
                             <Nav.Link onClick={() => loginWithRedirect()}>Login</Nav.Link>
                         </>
                     )}
