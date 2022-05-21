@@ -3,16 +3,11 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Profile.css"
 import "../App.css"
-import {Navigation} from 'react-minimal-side-navigation';
 import 'react-minimal-side-navigation/lib/ReactMinimalSideNavigation.css';
-import {useNavigate} from "react-router-dom";
 import Container from "react-bootstrap/Container";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
 import {useAuth0} from "@auth0/auth0-react";
 
 export default function CompleteProfile(props) {
-    const navigate = useNavigate();
     const [firstName, setFirstName] = useState("");
     const [lastName, setLastName] = useState("");
 
@@ -50,7 +45,7 @@ export default function CompleteProfile(props) {
                         />
                     </Form.Group>
                     <Form.Group>
-                        <Button type="submit">Save</Button>
+                        <Button bsPrefix="btn-custom" type="submit">Save</Button>
                     </Form.Group>
                 </Form>
             </div>
